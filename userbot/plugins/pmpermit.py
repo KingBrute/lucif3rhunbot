@@ -267,8 +267,7 @@ if Config.PRIVATE_GROUP_ID is not None:
             else:
                 USER_BOT_NO_WARN = (
                     f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
-                    "Just say the reason and wait until you get approved.\
-    "
+                    "Just say the reason and wait until you get approved."
                 )
         if PMPERMIT_PIC:
             r = await event.reply(USER_BOT_NO_WARN, file=PMPERMIT_PIC)
