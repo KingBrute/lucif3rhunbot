@@ -244,7 +244,7 @@ if Config.PRIVATE_GROUP_ID is not None:
                         my_username=my_username,
                         my_mention=my_mention,
                )
-
+)
             else:
                 USER_BOT_NO_WARN = (
                     f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
