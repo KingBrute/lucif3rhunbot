@@ -50,6 +50,7 @@ pygments
 pylast
 PyLyrics
 pymediainfo
+numpy
 pySmartDL
 python-barcode
 pytuneteller
