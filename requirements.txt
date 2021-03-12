@@ -37,6 +37,8 @@ lottie
 lxml
 lyricsgenius
 nekos.py
+numpy
+opencv-python-headless
 patool
 Pillow
 prettytable
@@ -50,7 +52,6 @@ pygments
 pylast
 PyLyrics
 pymediainfo
-numpy
 pySmartDL
 python-barcode
 pytuneteller
