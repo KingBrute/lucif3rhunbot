@@ -10,9 +10,7 @@ from validators.url import url
 from . import *
 
 
-@ultroid_cmd(
-    pattern="sketch$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="sketch$"))
 async def sketch(e):
     ureply = await e.get_reply_message()
     xx = await eor(e, "`...`")
@@ -49,9 +47,7 @@ async def sketch(e):
     os.remove("ultroid.png")
 
 
-@ultroid_cmd(
-    pattern="grey$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="grey$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     if not (ureply and (ureply.media)):
@@ -86,9 +82,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="blur$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="blur$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     if not (ureply and (ureply.media)):
@@ -123,9 +117,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="negative$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="negative$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
@@ -161,9 +153,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="mirror$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="mirror$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
@@ -200,9 +190,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="flip$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="flip$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
@@ -240,9 +228,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="quad$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="quad$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
@@ -282,9 +268,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="toon$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="toon$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
@@ -337,9 +321,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="danger$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="danger$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
@@ -376,9 +358,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@ultroid_cmd(
-    pattern="blue$",
-)
+@bot.on(admin_cmd(outgoing=True, pattern="blue$"))
 async def ultd(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
