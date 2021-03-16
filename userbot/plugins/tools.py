@@ -354,6 +354,19 @@ Year: {}""".format(
     else:
         await catevent.edit("xkcd n.{} not found!".format(xkcd_id))
 
+@bot.on(admin_cmd(pattern="b64encode ?(.*)"))
+@bot.on(sudo_cmd(pattern="b64encode ?(.*)", allow_sudo=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    input_str = event.pattern_match.group(1)
+    if not event.reply_to_msg_id:
+        await edit_or_reply(event, "```Reply to any message or text.```")
+        return
+     message_bytes = message.encode(input_str)
+     base64_bytes = base64.b64encode(message_bytes)
+     base64_message = base64_bytes.decode(input_str)
+     await edit_or_reply(event, base64_message)
 
 CMD_HELP.update(
     {
