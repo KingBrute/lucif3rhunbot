@@ -354,6 +354,7 @@ Year: {}""".format(
     else:
         await catevent.edit("xkcd n.{} not found!".format(xkcd_id))
 
+
 CMD_HELP.update(
     {
         "tools": "**Plugin : **`tools`\
