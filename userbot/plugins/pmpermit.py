@@ -94,12 +94,13 @@ if Config.PRIVATE_GROUP_ID is not None:
             PM_START.remove(user.id)
         if pmpermit_sql.is_approved(user.id):
             pmpermit_sql.disapprove(user.id)
-            await edit_or_reply(
+            await edit_delete(
                 event,
                 f"`disapproved to pm` [{user.first_name}](tg://user?id={user.id})",
+                3,
             )
         else:
-            await edit_or_reply(
+            await edit_delete(
                 event,
                 f"[{user.first_name}](tg://user?id={user.id}) `is not yet approved`",
                 3,
@@ -115,8 +116,10 @@ if Config.PRIVATE_GROUP_ID is not None:
                 return
         if user.id in PM_START:
             PM_START.remove(user.id)
-        await event.edit(
-            f"`You are blocked Now .You Can't Message Me from now..`[{user.first_name}](tg://user?id={user.id})"
+        await edit_delete(
+            event,
+            f"`You are blocked Now .You Can't Message Me from now..`[{user.first_name}](tg://user?id={user.id})",
+            3,
         )
         await event.client(functions.contacts.BlockRequest(user.id))
 
@@ -129,8 +132,10 @@ if Config.PRIVATE_GROUP_ID is not None:
             if not user:
                 return
         await event.client(functions.contacts.UnblockRequest(user.id))
-        await event.edit(
-            f"`You are Unblocked Now .You Can Message Me From now..`[{user.first_name}](tg://user?id={user.id})"
+        await edit_delete(
+            event,
+            f"`You are Unblocked Now .You Can Message Me From now..`[{user.first_name}](tg://user?id={user.id})",
+            3,
         )
 
     @bot.on(admin_cmd(pattern="listapproved$"))
