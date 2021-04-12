@@ -363,7 +363,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     length = len(input_str)
     catevent = await edit_or_reply(event, f"The Length of the string  is '{length}'")
-    else
+    else:
     catevent = await edit_or_reply(event, "`Reply to or with a String to calculate its Length.`")
 
 CMD_HELP.update(
