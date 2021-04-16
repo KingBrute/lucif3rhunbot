@@ -60,6 +60,7 @@ async def _(event):
     await event.client.send_message(
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message
     )
+    await event.delete()
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -84,6 +85,7 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(first_name=name))
     await event.client(functions.account.UpdateProfileRequest(last_name=blank))
     await event.edit("succesfully reverted to your account back")
+    await event.delete()
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID, f"#REVERT\nSuccesfully reverted back to your profile"
