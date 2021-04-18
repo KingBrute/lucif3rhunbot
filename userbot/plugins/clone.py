@@ -61,16 +61,17 @@ async def _(event):
         event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message
     )
     await edit_delete(
-                   event,
-                   "**LET US BE AS ONE**",
-                   3,
-)
+        event,
+        "**LET US BE AS ONE**",
+        3,
+    )
     await event.delete()
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
             f"#CLONED\nSuccesfully cloned [{first_name}](tg://user?id={user_id })",
         )
+
 
 @bot.on(admin_cmd(pattern="revert$"))
 async def _(event):
@@ -90,10 +91,10 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(last_name=blank))
     await event.edit("succesfully reverted to your account back")
     await edit_delete(
-                      event,
-                      "**Successfully Reverted Back to Original Account.**",
-                      2,
-                      )
+        event,
+        "**Successfully Reverted Back to Original Account.**",
+        2,
+    )
 
     if BOTLOG:
         await event.client.send_message(

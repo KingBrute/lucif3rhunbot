@@ -354,20 +354,23 @@ Year: {}""".format(
     else:
         await catevent.edit("xkcd n.{} not found!".format(xkcd_id))
 
+
 @bot.on(admin_cmd(pattern="length (.*)"))
 @bot.on(sudo_cmd(pattern="length (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`Calculating the Length. Hang on`")
+    await edit_or_reply(event, "`Calculating the Length. Hang on`")
     input = event.pattern_match.group(1)
     input_str = str(input)
     length = len(input_str)
-    if length==0:
-        catevent = await edit_or_reply(event, "`Reply to or with a String to calculate its Length.`")
+    if length == 0:
+        await edit_or_reply(
+            event, "`Reply to or with a String to calculate its Length.`"
+        )
     else:
-        catevent = await edit_or_reply(event, f"The Length of the string  is '{length}'")
-    
+        await edit_or_reply(event, f"The Length of the string  is '{length}'")
+
 
 CMD_HELP.update(
     {
