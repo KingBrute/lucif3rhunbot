@@ -22,7 +22,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 USER_BOT_WARN_ZERO = "You were spamming my peru master's inbox, henceforth you are blocked by my master's userbot. **Now GTFO, i'm playing minecraft** "
 
 
-if Config.PRIVATE_GROUP_ID is not None:
+if Config.PRIVATE_GROUP_ID != 0:
 
     @bot.on(admin_cmd(outgoing=True))
     async def you_dm_niqq(event):
@@ -61,7 +61,7 @@ if Config.PRIVATE_GROUP_ID is not None:
             await edit_delete(
                 event,
                 f"`Approved to pm `[{user.first_name}](tg://user?id={user.id})",
-                3,
+                5,
             )
             if user.id in PMMESSAGE_CACHE:
                 try:
@@ -74,7 +74,7 @@ if Config.PRIVATE_GROUP_ID is not None:
             await edit_delete(
                 event,
                 f"[{user.first_name}](tg://user?id={user.id}) `is already in approved list`",
-                3,
+                5,
             )
 
     @bot.on(admin_cmd(pattern="(da|disapprove)(?: |$)(.*)"))
@@ -94,16 +94,15 @@ if Config.PRIVATE_GROUP_ID is not None:
             PM_START.remove(user.id)
         if pmpermit_sql.is_approved(user.id):
             pmpermit_sql.disapprove(user.id)
-            await edit_delete(
+            await edit_or_reply(
                 event,
                 f"`disapproved to pm` [{user.first_name}](tg://user?id={user.id})",
-                3,
             )
         else:
-            await edit_delete(
+            await edit_or_reply(
                 event,
                 f"[{user.first_name}](tg://user?id={user.id}) `is not yet approved`",
-                3,
+                5,
             )
 
     @bot.on(admin_cmd(pattern="block(?: |$)(.*)"))
@@ -116,10 +115,8 @@ if Config.PRIVATE_GROUP_ID is not None:
                 return
         if user.id in PM_START:
             PM_START.remove(user.id)
-        await edit_delete(
-            event,
-            f"`You are blocked Now .You Can't Message Me from now..`[{user.first_name}](tg://user?id={user.id})",
-            3,
+        await event.edit(
+            f"`You are blocked Now .You Can't Message Me from now..`[{user.first_name}](tg://user?id={user.id})"
         )
         await event.client(functions.contacts.BlockRequest(user.id))
 
@@ -132,10 +129,8 @@ if Config.PRIVATE_GROUP_ID is not None:
             if not user:
                 return
         await event.client(functions.contacts.UnblockRequest(user.id))
-        await edit_delete(
-            event,
-            f"`You are Unblocked Now .You Can Message Me From now..`[{user.first_name}](tg://user?id={user.id})",
-            3,
+        await event.edit(
+            f"`You are Unblocked Now .You Can Message Me From now..`[{user.first_name}](tg://user?id={user.id})"
         )
 
     @bot.on(admin_cmd(pattern="listapproved$"))
@@ -232,27 +227,30 @@ if Config.PRIVATE_GROUP_ID is not None:
         my_last = me.last_name
         my_fullname = f"{my_first} {my_last}" if my_last else my_first
         my_username = f"@{me.username}" if me.username else my_mention
-        Config.MAX_FLOOD_IN_PMS
-        PM_WARNS[chat_id] + 1
+        totalwarns = Config.MAX_FLOOD_IN_PMS
+        warns = PM_WARNS[chat_id]
         if PMMENU:
             if Config.CUSTOM_PMPERMIT_TEXT:
-                USER_BOT_NO_WARN = Config.CUSTOM_PMPERMIT_TEXT.format(
-                    mention=mention,
-                    first=first,
-                    last=last,
-                    fullname=fullname,
-                    username=username,
-                    userid=userid,
-                    my_first=my_first,
-                    my_last=my_last,
-                    my_fullname=my_fullname,
-                    my_username=my_username,
-                    my_mention=my_mention,
+                USER_BOT_NO_WARN = (
+                    Config.CUSTOM_PMPERMIT_TEXT.format(
+                        mention=mention,
+                        first=first,
+                        last=last,
+                        fullname=fullname,
+                        username=username,
+                        userid=userid,
+                        my_first=my_first,
+                        my_last=my_last,
+                        my_fullname=my_fullname,
+                        my_username=my_username,
+                        my_mention=my_mention,
+                    )
                 )
             else:
+
                 USER_BOT_NO_WARN = (
                     f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
-                    "Just say the reason and wait until you get approved.**"
+                    f"Just say the reason and wait until you get approved.\"
                 )
         else:
             if Config.CUSTOM_PMPERMIT_TEXT:
@@ -272,7 +270,7 @@ if Config.PRIVATE_GROUP_ID is not None:
             else:
                 USER_BOT_NO_WARN = (
                     f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
-                    "Just say the reason and wait until you get approved."
+                    f"Just say the reason and wait until you get approved.\"
                 )
         if PMPERMIT_PIC:
             r = await event.reply(USER_BOT_NO_WARN, file=PMPERMIT_PIC)
