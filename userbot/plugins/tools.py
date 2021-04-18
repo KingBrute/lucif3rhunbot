@@ -360,11 +360,14 @@ async def _(event):
     if event.fwd_from:
         return
     catevent = await edit_or_reply(event, "`Calculating the Length. Hang on`")
-    input_str = event.pattern_match.group(1)
+    input = event.pattern_match.group(1)
+    input_str = str(input)
     length = len(input_str)
-    catevent = await edit_or_reply(event, f"The Length of the string  is '{length}'")
+    if length==0:
+        catevent = await edit_or_reply(event, "`Reply to or with a String to calculate its Length.`")
     else:
-    catevent = await edit_or_reply(event, "`Reply to or with a String to calculate its Length.`")
+        catevent = await edit_or_reply(event, f"The Length of the string  is '{length}'")
+    
 
 CMD_HELP.update(
     {
