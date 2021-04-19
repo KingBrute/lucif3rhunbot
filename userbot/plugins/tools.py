@@ -362,8 +362,8 @@ async def _(event):
         return
     await edit_or_reply(event, "`Calculating the Length. Hang on`")
     inpu = await event.get_reply_message()
-    input = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
-    input_str = str(input)
+    input = ("".join(event.text.split[1:])).split(" ", 1)
+    input_str = complex(input[0])
     length = len(input_str)
     if length == 0:
         await edit_or_reply(
@@ -397,6 +397,8 @@ CMD_HELP.update(
         \n\n•  **Syntax : **`.color` <color_code> \
         \n•  **Function : **__sends you a plain image of the color example :__`.color #ff0000`\
         \n\n•  **Syntax : **`.xkcd` <query>\
-        \n•  **Function : **__Searches for the query for the relevant XKCD comic __"
+        \n•  **Function : **__Searches for the query for the relevant XKCD comic __\
+        \n\n•  **Syntax : **`.length` <String>\
+        \n•  **Function : **__Calculates the lenght of the String given__"
     }
 )
