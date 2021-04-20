@@ -58,7 +58,7 @@ async def print_changelogs(event, ac_br, changelog):
         f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
-        await event.edit("`Changelog is too big, view the file to see it.`")
+        await edit_delete(event,"`Changelog is too big, view the file to see it.`",3)
         with open("output.txt", "w+") as file:
             file.write(changelog_str)
         await event.client.send_file(
@@ -96,8 +96,10 @@ async def update(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    await event.edit(
-        "`Successfully Updated!\n" "Bot is restarting... Wait for a minute!`"
+    await edit_delete(
+        event,
+        "`Successfully Updated!\n" "Bot is restarting... Wait for a minute!`",
+        2,
     )
     # Spin a new instance of bot
     args = [sys.executable, "-m", "userbot"]
