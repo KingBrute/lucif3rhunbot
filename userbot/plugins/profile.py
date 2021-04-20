@@ -206,10 +206,10 @@ async def _(event):
         for channel_obj in result.chats
     )
 
-    await await edit_delete(
-                                  event,
-                                  output_str,
-                                  1,
+    await edit_delete(
+                      event,
+                      output_str,
+                      1,
                 )
 
 
