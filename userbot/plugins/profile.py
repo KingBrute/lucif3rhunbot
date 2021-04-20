@@ -32,10 +32,10 @@ async def _(event):
     bio = event.pattern_match.group(1)
     try:
         await event.client(functions.account.UpdateProfileRequest(about=bio))
-        await await edit_delete(
-                                  event,
-                                  "**Succesfully changed my profile bio.**",
-                                  1,
+        await edit_delete(
+                          event,
+                          "**Succesfully changed my profile bio.**",
+                          1,
                 )
     except Exception as e:
         await event.edit(str(e))
@@ -56,10 +56,10 @@ async def _(event):
                 first_name=first_name, last_name=last_name
             )
         )
-        await await edit_delete(
-                                  event,
-                                  "**My name was changed successfully.**",
-                                  1,
+        await edit_delete(
+                          event,
+                          "**My name was changed successfully.**",
+                          1,
                 )
     except Exception as e:
         await event.edit(str(e))
@@ -160,7 +160,11 @@ async def count(event):
     result += f"`Channels:`\t**{bc}**\n"
     result += f"`Bots:`\t**{b}**"
 
-    await event.edit(result)
+    await edit_delete(
+                      event,
+                      result,
+                      1,
+                )
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"delpfp"))
@@ -185,10 +189,10 @@ async def remove_profilepic(delpfp):
         for sep in pfplist.photos
     ]
     await delpfp.client(DeletePhotosRequest(id=input_photos))
-    await await edit_delete(
-                                  delpfp,
-                                  "**My profile picture was succesfully changed.**",
-                                  1,
+    await edit_delete(
+                      delpfp,
+                      "**My profile picture was succesfully changed.**",
+                      1,
                 )
 
 
