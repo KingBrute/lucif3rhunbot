@@ -32,7 +32,11 @@ async def _(event):
     bio = event.pattern_match.group(1)
     try:
         await event.client(functions.account.UpdateProfileRequest(about=bio))
-        await event.edit("Succesfully changed my profile bio")
+        await await edit_delete(
+                                  event,
+                                  "**Succesfully changed my profile bio.**",
+                                  1,
+                )
     except Exception as e:
         await event.edit(str(e))
 
@@ -52,7 +56,11 @@ async def _(event):
                 first_name=first_name, last_name=last_name
             )
         )
-        await event.edit("My name was changed successfully")
+        await await edit_delete(
+                                  event,
+                                  "**My name was changed successfully.**",
+                                  1,
+                )
     except Exception as e:
         await event.edit(str(e))
 
@@ -96,7 +104,11 @@ async def _(event):
             except Exception as e:
                 await event.edit(str(e))
             else:
-                await event.edit("My profile picture was succesfully changed")
+                await edit_delete(
+                                  event,
+                                  "**My profile picture was succesfully changed.**",
+                                  1,
+                )
     try:
         os.remove(photo)
     except Exception as e:
@@ -173,7 +185,11 @@ async def remove_profilepic(delpfp):
         for sep in pfplist.photos
     ]
     await delpfp.client(DeletePhotosRequest(id=input_photos))
-    await delpfp.edit(f"`Successfully deleted {len(input_photos)} profile picture(s).`")
+    await await edit_delete(
+                                  delpfp,
+                                  "**My profile picture was succesfully changed.**",
+                                  1,
+                )
 
 
 @bot.on(admin_cmd(pattern="myusernames$"))
@@ -186,7 +202,11 @@ async def _(event):
         for channel_obj in result.chats
     )
 
-    await event.edit(output_str)
+    await await edit_delete(
+                                  event,
+                                  output_str,
+                                  1,
+                )
 
 
 CMD_HELP.update(
