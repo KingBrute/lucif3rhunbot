@@ -337,7 +337,7 @@ async def emoji_penis(e):
 
 CMD_HELP.update(
 {
-    "autoprofile": """**Plugin : **`Badart`
+    "badart": """**Plugin : **`Badart`
 
     **Commands found in Badart are **
   •  `.muth`
