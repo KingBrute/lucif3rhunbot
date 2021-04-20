@@ -361,9 +361,8 @@ async def _(event):
     if event.fwd_from:
         return
     await edit_or_reply(event, "`Calculating the Length. Hang on`")
-    inpu = await event.get_reply_message()
-    input = ("".join(event.text.split[1:])).split(" ", 1)
-    input_str = complex(input[0])
+    input = await event.get_reply_message()
+    input_str = complex(input)
     length = len(input_str)
     if length == 0:
         await edit_or_reply(
