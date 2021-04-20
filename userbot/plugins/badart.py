@@ -334,3 +334,24 @@ async def emoji_penis(e):
     if emoji:
         titid = titid.replace("🍆", emoji)
     await e.edit(titid)
+
+CMD_HELP.update(
+{
+    "autoprofile": """**Plugin : **`Badart`
+
+    **Commands found in Badart are **
+  •  `.muth`
+  •  `.ohnoo`
+  •  `.lovestory`
+  •  `.ohyaah`
+  •  `.foff`
+  •  `.mf`
+  •  `.sporn`
+  •  `.spika`
+  •  `.sxx`
+  •  `.sdick <text>`
+  •  `.penis | dick`
+  
+**Function : **__Different kind of Badart Commands are there try out yourself__"""
+}
+)
