@@ -4,8 +4,6 @@ import urllib
 from telethon.tl import functions
 
 OFFLINE_TAG = "[OFFLINE]"
-original_first_name = user.first_name
-original_last_name = user.last_name
 
 @bot.on(admin_cmd(pattern="offline"))  # pylint:disable=E0602
 async def _(event):
@@ -13,6 +11,8 @@ async def _(event):
         return
     user_it = "me"
     user = await event.client.get_entity(user_it)
+    original_first_name = user.first_name
+    original_last_name = user.last_name
     if user.first_name.startswith(OFFLINE_TAG):
         await event.edit("**Already in Offline Mode.**")
         return
