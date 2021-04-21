@@ -92,7 +92,7 @@ CMD_HELP.update(
   •  **Syntax : **`.online`
   •  **Function : **__ Remove Offline Tag from your name and change profile pic. __
 
-**Note - If you have a last name remove it unless it automatically removed.**
+**Note - If you have a last name remove it unless it automatically removed.**"""
 
 
 }
