@@ -4,7 +4,8 @@ import urllib
 from telethon.tl import functions
 
 OFFLINE_TAG = "[OFFLINE]"
-
+original_first_name = user.first_name
+original_last_name = user.last_name
 
 @bot.on(admin_cmd(pattern="offline"))  # pylint:disable=E0602
 async def _(event):
@@ -34,8 +35,8 @@ async def _(event):
         os.system("rm -fr donottouch.jpg")
     except Exception as e:  # pylint:disable=C0103,W0703
         logger.warn(str(e))  # pylint:disable=E0602
-    last_name = user.first_name
-    first_name = OFFLINE_TAG
+    first_name = [user.first_name]
+    last_name = OFFLINE_TAG
     try:
         await event.client(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
@@ -69,8 +70,8 @@ async def _(event):
         await event.edit(str(e))
     else:
         await event.edit("**Changed profile to Online.**")
-    first_name = user.last_name
-    last_name = ""
+    first_name = original_first_name
+    last_name = original_last_name
     try:
         await event.client(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
