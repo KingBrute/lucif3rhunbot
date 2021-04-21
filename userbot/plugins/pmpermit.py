@@ -247,10 +247,9 @@ if Config.PRIVATE_GROUP_ID != 0:
                     )
                 )
             else:
-
                 USER_BOT_NO_WARN = (
                     f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
-                    f"Just say the reason and wait until you get approved.\"
+                    f"Just say the reason and wait until you get approved."
                 )
         else:
             if Config.CUSTOM_PMPERMIT_TEXT:
@@ -270,7 +269,7 @@ if Config.PRIVATE_GROUP_ID != 0:
             else:
                 USER_BOT_NO_WARN = (
                     f"`Hi `{mention}`, I haven't approved you yet to personal message me, Don't spam my inbox."
-                    f"Just say the reason and wait until you get approved.\"
+                    f"Just say the reason and wait until you get approved."
                 )
         if PMPERMIT_PIC:
             r = await event.reply(USER_BOT_NO_WARN, file=PMPERMIT_PIC)
