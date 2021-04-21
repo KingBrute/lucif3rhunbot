@@ -160,11 +160,7 @@ async def count(event):
     result += f"`Channels:`\t**{bc}**\n"
     result += f"`Bots:`\t**{b}**"
 
-    await edit_delete(
-                      event,
-                      result,
-                      1,
-                )
+    await event.edit(result)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"delpfp"))
@@ -206,11 +202,7 @@ async def _(event):
         for channel_obj in result.chats
     )
 
-    await edit_delete(
-                      event,
-                      output_str,
-                      1,
-                )
+    await event.edit(output_str)
 
 
 CMD_HELP.update(
