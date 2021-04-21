@@ -5,14 +5,15 @@ from telethon.tl import functions
 
 OFFLINE_TAG = "[OFFLINE]"
 
+
 @bot.on(admin_cmd(pattern="offline"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
     user_it = "me"
     user = await event.client.get_entity(user_it)
-    original_first_name = user.first_name
-    original_last_name = user.last_name
+    user.first_name
+    user.last_name
     if user.first_name.startswith(OFFLINE_TAG):
         await event.edit("**Already in Offline Mode.**")
         return
@@ -83,6 +84,7 @@ async def _(event):
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
 
+
 CMD_HELP.update(
     {
         "status": """**Plugin : ** `Status`
@@ -94,7 +96,5 @@ CMD_HELP.update(
   •  **Function : **__ Remove Offline Tag from your name and change profile pic. __
 
 **Note - If you have a last name remove it unless it automatically removed.**"""
-
-
-}
+    }
 )

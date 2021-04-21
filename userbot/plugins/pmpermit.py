@@ -227,24 +227,22 @@ if Config.PRIVATE_GROUP_ID != 0:
         my_last = me.last_name
         my_fullname = f"{my_first} {my_last}" if my_last else my_first
         my_username = f"@{me.username}" if me.username else my_mention
-        totalwarns = Config.MAX_FLOOD_IN_PMS
-        warns = PM_WARNS[chat_id]
+        Config.MAX_FLOOD_IN_PMS
+        PM_WARNS[chat_id]
         if PMMENU:
             if Config.CUSTOM_PMPERMIT_TEXT:
-                USER_BOT_NO_WARN = (
-                    Config.CUSTOM_PMPERMIT_TEXT.format(
-                        mention=mention,
-                        first=first,
-                        last=last,
-                        fullname=fullname,
-                        username=username,
-                        userid=userid,
-                        my_first=my_first,
-                        my_last=my_last,
-                        my_fullname=my_fullname,
-                        my_username=my_username,
-                        my_mention=my_mention,
-                    )
+                USER_BOT_NO_WARN = Config.CUSTOM_PMPERMIT_TEXT.format(
+                    mention=mention,
+                    first=first,
+                    last=last,
+                    fullname=fullname,
+                    username=username,
+                    userid=userid,
+                    my_first=my_first,
+                    my_last=my_last,
+                    my_fullname=my_fullname,
+                    my_username=my_username,
+                    my_mention=my_mention,
                 )
             else:
                 USER_BOT_NO_WARN = (

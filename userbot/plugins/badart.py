@@ -335,9 +335,10 @@ async def emoji_penis(e):
         titid = titid.replace("🍆", emoji)
     await e.edit(titid)
 
+
 CMD_HELP.update(
-{
-    "badart": """**Plugin : **`Badart`
+    {
+        "badart": """**Plugin : **`Badart`
 
     **Commands found in Badart are **
   •  `.muth`
@@ -353,5 +354,5 @@ CMD_HELP.update(
   •  `.penis | dick`
   
 **Function : **__Different kind of Badart Commands are there try out yourself__"""
-}
+    }
 )

@@ -33,10 +33,10 @@ async def _(event):
     try:
         await event.client(functions.account.UpdateProfileRequest(about=bio))
         await edit_delete(
-                          event,
-                          "**Succesfully changed my profile bio.**",
-                          1,
-                )
+            event,
+            "**Succesfully changed my profile bio.**",
+            1,
+        )
     except Exception as e:
         await event.edit(str(e))
 
@@ -57,10 +57,10 @@ async def _(event):
             )
         )
         await edit_delete(
-                          event,
-                          "**My name was changed successfully.**",
-                          1,
-                )
+            event,
+            "**My name was changed successfully.**",
+            1,
+        )
     except Exception as e:
         await event.edit(str(e))
 
@@ -105,9 +105,9 @@ async def _(event):
                 await event.edit(str(e))
             else:
                 await edit_delete(
-                                  event,
-                                  "**My profile picture was succesfully changed.**",
-                                  1,
+                    event,
+                    "**My profile picture was succesfully changed.**",
+                    1,
                 )
     try:
         os.remove(photo)
@@ -186,10 +186,10 @@ async def remove_profilepic(delpfp):
     ]
     await delpfp.client(DeletePhotosRequest(id=input_photos))
     await edit_delete(
-                      delpfp,
-                      "**My profile picture was succesfully changed.**",
-                      1,
-                )
+        delpfp,
+        "**My profile picture was succesfully changed.**",
+        1,
+    )
 
 
 @bot.on(admin_cmd(pattern="myusernames$"))
