@@ -39,8 +39,8 @@ async def _(event):
       first_name = original_first_name
       last_name = original_last_name + OFFLINE_TAG
     else:
-      first_name = [original_first_name
-      last_name = original_last_name] + OFFLINE_TAG
+      first_name = "["+original_first_name
+      last_name = original_last_name+"]"+ OFFLINE_TAG
     try:
         await event.client(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
