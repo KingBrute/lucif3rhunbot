@@ -16,4 +16,4 @@ async def _(event):
     video = "Video.mp4"
     await event.client.send_file(event.chat_id, video)
     try:
-        os.system("rm -fr Video.mp4")
+       os.system("rm -fr Video.mp4")
