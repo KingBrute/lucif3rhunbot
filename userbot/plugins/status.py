@@ -5,7 +5,7 @@ from telethon.tl import functions
 
 OFFLINE_TAG = "[OFFLINE]"
 user_it = "me"
-user = await event.client.get_entity(user_it)
+user = client.get_entity(user_it)
 original_first_name = user.first_name
 original_last_name = user.last_name
 
