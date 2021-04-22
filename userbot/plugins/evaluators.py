@@ -10,7 +10,6 @@ from . import *
 
 
 @bot.on(admin_cmd(pattern="exec(?: |$|\n)(.*)", command="exec"))
-@bot.on(sudo_cmd(pattern="exec(?: |$|\n)(.*)", command="exec", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -44,7 +43,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="eval(?: |$|\n)(.*)", command="eval"))
-@bot.on(sudo_cmd(pattern="eval(?: |$|\n)(.*)", command="eval", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
