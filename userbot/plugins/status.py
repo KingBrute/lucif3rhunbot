@@ -3,7 +3,7 @@ import urllib
 
 from telethon.tl import functions
 
-OFFLINE_TAG = "[OFFLINE]"
+global OFFLINE_TAG = "[OFFLINE]"
 
 global original_first_name, original_last_name
 
@@ -64,10 +64,10 @@ async def _(event):
         return
     user_it = "me"
     user = await event.client.get_entity(user_it)
-    if user.last_name.endswith(OFFLINE_TAG):
-        await event.edit("**Changing Profile to Online...**")
-    elif user.last_name is None:
+    if user.last_name is None:
         await event.edit("**You Need to use Offline Command first to use Online Command**")
+    elif user.last_name.endswith(OFFLINE_TAG):
+         await event.edit("**Changing Profile to Online...**")
     else:
         await event.edit("**Already Online.**")
         return
