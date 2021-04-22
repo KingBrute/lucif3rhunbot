@@ -31,14 +31,12 @@ async def img_sampler(event):
         lim = int(5)
     response = googleimagesdownload()
     # creating list of arguments
-    query_fix = '"""'+query+ '"""'
-    for q in query_fix:
-     arguments = {
-        "keywords": q,
+    arguments = {
+        "keywords": query,
         "limit": lim,
         "format": "jpg",
         "no_directory": "no_directory",
-     }
+    }
     # passing the arguments to the function
     try:
         paths = response.download(arguments)
