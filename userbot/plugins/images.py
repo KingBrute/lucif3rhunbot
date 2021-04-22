@@ -31,7 +31,8 @@ async def img_sampler(event):
         lim = int(5)
     response = googleimagesdownload()
     # creating list of arguments
-    for q in query:
+    query_fix = '"""'+query+ '"""'
+    for q in query_fix:
      arguments = {
         "keywords": q,
         "limit": lim,
