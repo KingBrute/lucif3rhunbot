@@ -38,12 +38,12 @@ async def _(event):
         os.system("rm -fr donottouch.jpg")
     except Exception as e:  # pylint:disable=C0103,W0703
         logger.warn(str(e))  # pylint:disable=E0602
-    if original_first_name.startswith("["):
+    if original_last_name == " ":
         first_name = original_first_name
-        last_name = original_last_name + OFFLINE_TAG
+        last_name = OFFLINE_TAG
     else:
-        first_name = "[" + original_first_name
-        last_name = original_last_name + "]" + OFFLINE_TAG
+        first_name =original_first_name
+        last_name = original_last_name + OFFLINE_TAG
     try:
         await event.client(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
@@ -62,7 +62,7 @@ async def _(event):
         return
     user_it = "me"
     user = await event.client.get_entity(user_it)
-    if user.last_name.startswith(original_last_name + OFFLINE_TAG):
+    if user.last_name.endswith(OFFLINE_TAG):
         await event.edit("**Changing Profile to Online...**")
     else:
         await event.edit("**Already Online.**")
