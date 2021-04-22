@@ -43,7 +43,9 @@ async def _(event):
         last_name = OFFLINE_TAG
     else:
         first_name =original_first_name
-        last_name = original_last_name + OFFLINE_TAG
+        sequence = (original_last_name,OFFLINE_TAG)
+        joined_name = " ".join(sequence)
+        last_name = joined_name
     try:
         await event.client(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
