@@ -37,10 +37,10 @@ async def _(event):
         logger.warn(str(e))  # pylint:disable=E0602
     if original_first_name.startswith('['):
       first_name = original_first_name
-      last_name = original_last_name "[OFFLINE]"
+      last_name = original_last_name + OFFLINE_TAG
     else:
       first_name = [original_first_name
-      last_name = original_last_name] "[OFFLINE]"
+      last_name = original_last_name] + OFFLINE_TAG
     try:
         await event.client(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
@@ -57,7 +57,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if user.last_name.startswith(original_last_name "[OFFLINE]"):
+    if user.last_name.startswith(original_last_name + OFFLINE_TAG):
         await event.edit("**Changing Profile to Online...**")
     else:
         await event.edit("**Already Online.**")
