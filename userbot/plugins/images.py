@@ -41,7 +41,7 @@ async def img_sampler(event):
     count = 0
     for q in queries:
      count += 1
-     q = ("{}".format(line.strip()))
+     q = ("{}".format(q.strip()))
      arguments = {
         "keywords": q,
         "limit": lim,
