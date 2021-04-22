@@ -25,6 +25,12 @@ async def img_sampler(event):
     file1 = open('query.txt', 'w')
     file1.writelines(query)
     file1.close()
+    file1 = open('query.txt', 'r')
+    queries = file1.readlines()
+    count = 0
+    for q in queries:
+     count += 1
+     q = ("{}".format(q.strip()))
     cat = await edit_or_reply(event, "`Processing...`")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
@@ -36,18 +42,12 @@ async def img_sampler(event):
         lim = int(5)
     response = googleimagesdownload()
     # creating list of arguments
-    file1 = open('query.txt', 'r')
-    queries = file1.readlines()
-    count = 0
-    for q in queries:
-     count += 1
-     q = ("{}".format(q.strip()))
-     arguments = {
+    arguments = {
         "keywords": q,
         "limit": lim,
         "format": "jpg",
         "no_directory": "no_directory",
-     }
+    }
     # passing the arguments to the function
     try:
         paths = response.download(arguments)
