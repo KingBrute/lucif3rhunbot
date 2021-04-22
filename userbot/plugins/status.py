@@ -3,7 +3,7 @@ import urllib
 
 from telethon.tl import functions
 
-global OFFLINE_TAG = "[OFFLINE]"
+OFFLINE_TAG = "[OFFLINE]"
 
 global original_first_name, original_last_name
 
