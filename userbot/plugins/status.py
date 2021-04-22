@@ -64,6 +64,8 @@ async def _(event):
     user = await event.client.get_entity(user_it)
     if user.last_name.endswith(OFFLINE_TAG):
         await event.edit("**Changing Profile to Online...**")
+    if user.last_name == original_last_name:
+        await event.edit("**You Need to use Offline Command first to use Online Command**")
     else:
         await event.edit("**Already Online.**")
         return
