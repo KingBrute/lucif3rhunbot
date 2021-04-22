@@ -39,7 +39,7 @@ async def img_sampler(event):
     file1 = open('query.txt', 'r')
     queries = file1.readlines()
     count = 0
-    for line in Lines:
+    for q in queries:
      count += 1
      q = ("{}".format(line.strip()))
      arguments = {
