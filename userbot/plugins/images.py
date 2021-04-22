@@ -20,7 +20,6 @@ async def img_sampler(event):
         return await edit_or_reply(
             event, "Reply to a message or pass a query to search!"
         )
-    q = "'''"+query+ "'''"
     cat = await edit_or_reply(event, "`Processing...`")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
@@ -32,9 +31,9 @@ async def img_sampler(event):
         lim = int(5)
     response = googleimagesdownload()
     # creating list of arguments
-    for q1 in q:
+    for q in query:
      arguments = {
-        "keywords": q1,
+        "keywords": q,
         "limit": lim,
         "format": "jpg",
         "no_directory": "no_directory",
