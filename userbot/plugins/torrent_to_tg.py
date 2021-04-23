@@ -11,9 +11,6 @@ async def _(event):
         await edit_or_reply(event, "```Reply to or with a Magnet Link```")
         return
     chat = "@uploadbot"
-    if reply_message.sender.bot:
-        await edit_or_reply(event, "```Reply to actual user's message.```")
-        return
     catevent = await edit_or_reply(event, " `Hmm, A magnet Link. I could generate download link. Hang On!`")
     async with event.client.conversation(chat) as conv:
         try:
