@@ -22,7 +22,7 @@ async def _(event):
             )
         if bot_response.text.startswith("Hi!"):
             await conv.send_message(reply_message)
-            while true:
+            while True:
                 response = await conv.get_response()
                 if response.text.endswith(".zip"): break
                 await event.client.send_read_acknowledge(conv.chat_id)
