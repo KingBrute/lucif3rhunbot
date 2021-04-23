@@ -18,21 +18,16 @@ async def _(event):
             bot_response = await conv.get_response()
         except YouBlockedUserError:
           return await catevent.edit(
-                "`You blocked `@@uploadbot` Unblock it and give a try`"
+                "`You blocked `@uploadbot` Unblock it and give a try`"
             )
         if bot_response.text.startswith("Hi!"):
             await conv.send_message(reply_message)
-            response = await conv.get_response()
-            response1 = await conv.get_response()
-            if response1.text.startwith("Checking torrent"):
-                await catevent.sleep(10)
-                response2 = await conv.get_response()
+            while true:
+                response = await conv.get_response()
+            if response.text.endswith(".zip"): break
                 await event.client.send_read_acknowledge(conv.chat_id)
                 parsed_response = re.findall(r'(http.*mkv|^http.*mp4|^http.*mp3)',response2)
                 await catevent.edit(f"The Downlink For The Mangnet Link is '{parsed_response}'")
-            else:
-                response3 = await conv.get_response()
-                await catevent.edit(response3)
         else:
             await catevent.edit("Fuck You!!")
 
