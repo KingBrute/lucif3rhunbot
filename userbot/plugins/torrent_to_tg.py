@@ -24,7 +24,7 @@ async def _(event):
             await conv.get_response()
             await event.client.forward_messages(chat, reply_message)
             response1 = await conv.get_response()
-        if response1.text:
+        if response1.text.endswith('.zip'):
                 await event.client.send_read_acknowledge(conv.chat_id)
                 parsed_response = re.findall(r'(http.*mkv|^http.*mp4|^http.*mp3)',response1)
                 await edit_or_reply(catevent,f"The Downlink For The Mangnet Link is '{parsed_response}'".
