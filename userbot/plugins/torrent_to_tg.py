@@ -6,10 +6,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 async def _(event):
     if event.fwd_from:
         return
-    if not event.reply_to_msg_id:
-        await edit_or_reply(event, "```Reply to any user message.```")
-        return
-    reply_message = await event.get_reply_message()
+    reply_message = event.pattern_match.group(1)
     if not reply_message.startswith("magnet"):
         await edit_or_reply(event, "```Reply to or with a Magnet Link```")
         return
