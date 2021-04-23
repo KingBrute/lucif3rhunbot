@@ -15,8 +15,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             await conv.send_message("/start")
-            await conv.get_response()
-            await event.client.forward_messages(chat, reply_message)
+            await conv.send_message(reply_message)
             response = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
             parsed_response = re.findall(r'(http.*mkv|^http.*mp4|^http.*mp3)',response1)
