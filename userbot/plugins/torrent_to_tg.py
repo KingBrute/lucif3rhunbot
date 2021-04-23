@@ -16,6 +16,10 @@ async def _(event):
         try:
             await conv.send_message("/start")
             bot_response = await conv.get_response()
+         except YouBlockedUserError:
+          return await catevent.edit(
+                "`You blocked `@@uploadbot` Unblock it and give a try`"
+            )
         if bot_response.text.startswith("Hi!"):
             await conv.send_message(reply_message)
             response = await conv.get_response()
@@ -31,7 +35,4 @@ async def _(event):
                 await catevent.edit(response3)
         else:
             await catevent.edit("Fuck You!!")
-        except YouBlockedUserError:
-         return await catevent.edit(
-                "`You blocked `@@uploadbot` Unblock it and give a try`"
-            )
+
