@@ -16,7 +16,7 @@ async def _(event):
         try:
             await conv.send_message("/start")
             bot_response = await conv.get_response()
-         except YouBlockedUserError:
+        except YouBlockedUserError:
           return await catevent.edit(
                 "`You blocked `@@uploadbot` Unblock it and give a try`"
             )
