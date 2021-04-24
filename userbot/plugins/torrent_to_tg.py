@@ -15,19 +15,20 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             await conv.send_message("/start")
-            bot_response = await conv.get_response()
-        except YouBlockedUserError:
-          return await catevent.edit(
-                "`You blocked `@uploadbot` Unblock it and give a try`"
-            )
-        if bot_response.text.startswith("Hi!"):
-            await conv.send_message(reply_message)
-            response = await conv.get_response()
-            response2 = await conv.get_response()
-            response3 = await conv.get_response()
+            await conv.get_response()
+            await event.client.forward_messages(chat, reply_message)
+            response1 = await conv.get_response()
+            if response1.text:
+                await event.client.send_read_acknowledge(conv.chat_id)
+                return await catevent.edit(response1.text, parse_mode=parse_pre)
+            await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
-            parsed_response = re.findall(r'(http.*mkv|^http.*mp4|^http.*mp3)',response3)
-            await catevent.edit(f"The Downlink For The Mangnet Link is '{parsed_response}'")
-        else:
-            await catevent.edit("Fuck You!!")
-
+            response3 = await conv.get_response()
+            response4 = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            await edit_or_reply(catevent, response4.text)
+        except YouBlockedUserError:
+            return await catevent.edit(
+                "`You blocked `@VS_Robot` Unblock it and give a try`"
+            )
+            
