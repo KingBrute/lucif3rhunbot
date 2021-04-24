@@ -37,6 +37,7 @@ lottie
 lxml
 lyricsgenius
 nekos.py
+opencv-python
 patool
 Pillow
 prettytable
