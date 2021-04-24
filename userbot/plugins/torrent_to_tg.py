@@ -22,12 +22,12 @@ async def _(event):
             )
         if bot_response.text.startswith("Hi!"):
             await conv.send_message(reply_message)
-            while True:
-                response = await conv.get_response()
-                if response.text.endswith(".zip"): break
-                await event.client.send_read_acknowledge(conv.chat_id)
-                parsed_response = re.findall(r'(http.*mkv|^http.*mp4|^http.*mp3)',response)
-                await catevent.edit(f"The Downlink For The Mangnet Link is '{parsed_response}'")
+            response = await conv.get_response()
+            response2 = await conv.get_response()
+            response3 = await conv.get_response()
+            await event.client.send_read_acknowledge(conv.chat_id)
+            parsed_response = re.findall(r'(http.*mkv|^http.*mp4|^http.*mp3)',response)
+            await catevent.edit(f"The Downlink For The Mangnet Link is '{parsed_response}'")
         else:
             await catevent.edit("Fuck You!!")
 
